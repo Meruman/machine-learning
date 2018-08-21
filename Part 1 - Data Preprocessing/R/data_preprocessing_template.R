@@ -3,6 +3,14 @@
 # Importing the dataset
 dataset = read.csv('Data.csv')
 
+#Taking care of missing data
+dataset$Age = ifelse(is.na(dataset$Age), 
+                     ave(dataset$Age, FUN = function (X) mean(X, na.rm = TRUE)),
+                     dataset$Age)
+dataset$Salary = ifelse(is.na(dataset$Salary), 
+                     ave(dataset$Salary, FUN = function (X) mean(X, na.rm = TRUE)),
+                     dataset$Salary)
+
 # Splitting the dataset into the Training set and Test set
 # install.packages('caTools')
 library(caTools)
