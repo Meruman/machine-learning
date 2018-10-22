@@ -29,7 +29,11 @@ X[:,0] = labelencoder_x.fit_transform(X[:,0]) #Transform Categories into numbers
 onehotencoder = OneHotEncoder(categorical_features = [0])
 X = onehotencoder.fit_transform(X).toarray() #Transforma el valor de las categorias, en columnas diferentes formando una especie de binarios para diferenciarlos
 labelencoder_y = LabelEncoder()
-y = labelencoder_y.fit_transform(y)
+y = labelencoder_y.fit_transform(y) 
+
+#Splitting the dataset into the Training set and Test set
+
+
 
 # Feature Scaling
 """from sklearn.preprocessing import StandardScaler
