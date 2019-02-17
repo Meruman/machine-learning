@@ -18,7 +18,6 @@ fileout = input("Please give me the location where you want the outputfile inclu
 
 # Importing the dataset
 X = pd.read_csv(file, header = None, sep='\t')
-#X = pd.read_csv(r'C:\Users\marti\Documents\mter\clases\ML\Program ass 4\Example.tsv', header = None, sep='\t')
 dataset=X.iloc[:,:].values
 for i in range(len(X.columns)):
     if np.any(pd.isnull(X.values[:,-1])):    
@@ -27,8 +26,7 @@ for i in range(len(X.columns)):
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-First we need to preprocess the data, for this, we need to convert the classes from string to int, this way we can process
-it later, so with the str_to_int function we change the classes from A and B to 1 and 0
+preprocess the data
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -46,9 +44,6 @@ str_to_int(dataset, 0)
 dataset=pd.DataFrame(dataset,dtype=np.float64)
 x = dataset.iloc[:, 1:].values
 y = dataset.iloc[:, 0].values
-#m = len(y);
-#x = np.c_[ np.ones(m), x ]; #Gives value of 1 to Xo
-#m,n = x.shape #m number of training set, n number of total features
 
 def mean(numbers):
     result = sum(numbers)/float(len(numbers))
