@@ -15,12 +15,10 @@ print("Training perceptron")
 
 # Importing the dataset
 X = pd.read_csv(file, header = None, sep='\t')
-#X = pd.read_csv(r'C:\Users\marti\Documents\mter\clases\ML\Program ass 3\Example.tsv', header = None, sep='\t')
 dataset = X.iloc[:, :-1].values
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-First we need to preprocess the data, for this, we need to convert the classes from string to int, this way we can process
-it later, so with the str_to_int function we change the classes from A and B to 1 and 0
+preprocess the data
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -39,27 +37,12 @@ dataset=pd.DataFrame(dataset,dtype=np.float64)
 x = dataset.iloc[:, 1:].values
 y = dataset.iloc[:, 0].values
 m = len(y);
-x = np.c_[ np.ones(m), x ]; #Gives value of 1 to Xo
-m,n = x.shape #m number of training set, n number of total features
+x = np.c_[ np.ones(m), x ]; 
+m,n = x.shape 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Once we have good data, we perform the perceptron with this function, which implements all the steps for a single perceptron
-in a Batch mode, this is, with vectors. First we create the weights and initialize them with value of 0, after this, for 
-a given number of epochs (in this excercise is 100) we perform the following:
-    multiply all the instances with the weights and the sum everything for each instance, this is done with the dot product
-    of the 2 values= trainingInputs and weights.
-    Now that we have this, we have to compare the result with our activation function which is 1 if the result is above 0
-    otherwise it is 0. We do this for all the results in our activation variable, saving our prediction value in the 
-    prediction list variable.
-    
-    after we have all our predictions, we need the error for all the predictions which is performed and saved in the error 
-    variable.
-    
-    now, our goal is to output how many errors for each epoch we get, so we need to count all the nonzero value in our
-    error list.
-    
-    After this, we update the weights with the given learning rate which in this case is 1.
-    
+Once we have good data, we perform the perceptron, which implements all the steps for a single perceptron
+in a Batch mode   
     
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -83,7 +66,7 @@ def perceptron(Inputs,Labels, l_rate, n_epoch):
     return predictions
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-In annealing perceptron, we do the same but with learning rate = 1/(number of epoch we have done)
+annealing perceptron
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -109,7 +92,7 @@ def annealing_perceptron(Inputs,Labels, l_rate, n_epoch):
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Our main program, where we call the functions and write the output tsv file.
+ main program
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 pred=perceptron (x,y,1,100)
 pred2 = annealing_perceptron(x,y,1,100)
