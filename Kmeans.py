@@ -27,8 +27,7 @@ for i in range(len(X.columns)):
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-First we need to preprocess the data, for this, we need to convert the classes from string to int, this way we can process
-it later, so with the str_to_int function we change the classes from A and B to 1 and 0
+preprocess the data
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
